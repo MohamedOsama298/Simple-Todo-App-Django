@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+
+{%block content%}
+
+    <div class="container">
+        <a href="{% url 'create' %}" class="btn btn-primary">create Todo</a>
+
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+            <tr>
+                <th scope="row">{{todo.id}}</th>
+                <td> <a href="{% url 'detailed' todo.id %}"> {{ todo.name }} </a> </td>
+                <td> <a class="btn btn-info" href="{% url 'update' todo.id %}"> update </a> </td>
+                <td> <a class="btn btn-danger" href="{% url 'delete' todo.id %}"> delete </a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>      
+{%endblock content %}
